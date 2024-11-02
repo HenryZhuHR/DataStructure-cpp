@@ -1,17 +1,11 @@
-# 包含目录
-include_directories(${PROJECT_SOURCE_DIR}/include)
+cmake_minimum_required(VERSION 3.10)
 
-# 添加可执行文件 hello-world
-add_executable(hello-world hello-world.cpp)
+# CXX-standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# 定义安装规则
-install(TARGETS hello-world DESTINATION bin)
+project(hello-cpp) # 必须在设置编译器后面
+
+add_subdirectory(app)
 
 
-# 定义 uninstall 目标
-include(GNUInstallDirs)
-
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -E echo "Uninstalling..."
-    COMMAND ${CMAKE_COMMAND} -E remove -f "${CMAKE_INSTALL_PREFIX}/bin/hello-world"
-)
